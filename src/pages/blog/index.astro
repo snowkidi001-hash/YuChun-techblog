@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PostCard from '../../components/PostCard.astro';
+import { SITE_TITLE } from '../../consts';
+
+const posts = (await getCollection('blog'))
+	.filter((p) => !p.data.draft)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang="zh-Hant">
+	<head>
+		<BaseHead title="文章" description={`${SITE_TITLE}的所有文章`} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<header class="page-head">
+				<h1>文章</h1>
+				<p>所有科技策展與觀點，依時間排序。</p>
+			</header>
+			{
+				posts.length > 0 ? (
+					<div class="grid">
+						{posts.map((post) => (
+							<PostCard post={post} />
+						))}
+					</div>
+				) : (
+					<p class="empty">還沒有文章，敬請期待。</p>
+				)
+			}
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.page-head {
+		max-width: var(--maxw);
+		margin-bottom: 2.2rem;
+	}
+	.page-head h1 {
+		margin: 0 0 0.3rem;
+	}
+	.page-head p {
+		margin: 0;
+		color: var(--ink-soft);
+	}
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.6rem;
+	}
+	.empty {
+		color: var(--ink-soft);
+	}
+	@media (max-width: 720px) {
+		.grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

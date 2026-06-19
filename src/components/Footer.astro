@@ -1,0 +1,80 @@
+---
+import { SITE_TITLE, SOCIAL } from '../consts';
+const today = new Date();
+const hasSocial = SOCIAL.line || SOCIAL.threads || SOCIAL.github;
+---
+
+<footer>
+	<div class="inner">
+		<p class="name">{SITE_TITLE}</p>
+		<p class="meta">給專業工作者看的科技新知策展</p>
+		{
+			hasSocial && (
+				<div class="social-links">
+					{SOCIAL.line && (
+						<a href={SOCIAL.line} target="_blank" rel="noopener">
+							LINE
+						</a>
+					)}
+					{SOCIAL.threads && (
+						<a href={SOCIAL.threads} target="_blank" rel="noopener">
+							Threads
+						</a>
+					)}
+					{SOCIAL.github && (
+						<a href={SOCIAL.github} target="_blank" rel="noopener">
+							GitHub
+						</a>
+					)}
+				</div>
+			)
+		}
+		<p class="copy">&copy; {today.getFullYear()} {SITE_TITLE}</p>
+	</div>
+</footer>
+
+<style>
+	footer {
+		flex-shrink: 0;
+		border-top: 1px solid var(--line);
+		background: var(--paper-raised);
+		color: var(--ink-soft);
+	}
+	.inner {
+		width: var(--maxw-wide);
+		max-width: calc(100% - 2.5em);
+		margin-inline: auto;
+		padding: 2.4rem 0;
+		text-align: center;
+	}
+	.name {
+		font-family: var(--font-serif), Georgia, serif;
+		font-weight: 900;
+		font-size: 1.15rem;
+		color: var(--ink-strong);
+		margin: 0 0 0.2rem;
+	}
+	.meta {
+		margin: 0 0 1rem;
+		font-size: 0.92rem;
+	}
+	.social-links {
+		display: flex;
+		gap: 1.2rem;
+		justify-content: center;
+		margin-bottom: 1rem;
+	}
+	.social-links a {
+		color: var(--ink-soft);
+		text-decoration: none;
+		font-size: 0.9rem;
+		letter-spacing: 0.05em;
+	}
+	.social-links a:hover {
+		color: var(--accent);
+	}
+	.copy {
+		margin: 0;
+		font-size: 0.82rem;
+	}
+</style>

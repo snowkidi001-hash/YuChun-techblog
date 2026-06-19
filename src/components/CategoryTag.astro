@@ -1,0 +1,34 @@
+---
+// 分類標籤（小色點 + 文字），用於卡片列表與文章內頁。
+import { CATEGORIES, type Category } from '../consts';
+
+interface Props {
+	category: Category;
+}
+
+const { category } = Astro.props;
+const { label, cover } = CATEGORIES[category];
+---
+
+<span class="cat-tag" style={`--dot:${cover.bg};`}>
+	<span class="dot"></span>{label}
+</span>
+
+<style>
+	.cat-tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4em;
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		color: var(--ink-soft);
+	}
+	.dot {
+		width: 0.6em;
+		height: 0.6em;
+		border-radius: 999px;
+		background: var(--dot);
+		display: inline-block;
+	}
+</style>

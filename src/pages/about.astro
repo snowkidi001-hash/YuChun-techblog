@@ -1,0 +1,75 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="zh-Hant">
+	<head>
+		<BaseHead
+			title="關於"
+			description={`關於${SITE_TITLE}：給專業工作者看的科技新知策展。`}
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<article class="prose">
+				<h1>關於{SITE_TITLE}</h1>
+
+				<p class="lede">
+					這裡專為「沒時間追科技、但不能不懂科技」的專業工作者而寫。
+					我幫你篩掉雜訊，留下真正值得知道的，並講清楚一件事：
+					<strong>這跟你的工作有什麼關係。</strong>
+				</p>
+
+				<h2>為什麼是我</h2>
+				<p>
+					市面上的科技媒體很多，但大多停在「報導發生了什麼」。
+					我的不同，來自一個少見的交叉背景 ——
+					<strong>職業安全 × 大學教學 × AI 實務</strong>。
+					同一則科技新聞，我會從「對現場、對教學、對實際導入有什麼影響」去拆解，
+					而不是複述新聞稿。這是內容農場複製不來的視角。
+				</p>
+
+				<h2>你會在這裡讀到什麼</h2>
+				<ul>
+					<li><strong>AI</strong>：模型、工具、應用，以及它們對專業工作的真實衝擊。</li>
+					<li><strong>工具</strong>：值得你花時間學的生產力與技術工具。</li>
+					<li><strong>產業</strong>：科技如何改變各行各業的遊戲規則。</li>
+					<li><strong>技術解析</strong>：把複雜的技術，講到你聽得懂、用得上。</li>
+				</ul>
+
+				<h2>合作與課程</h2>
+				<p>
+					除了寫作，我也提供企業內訓、顧問與講座。
+					若你想把這裡談的科技趨勢，轉化成團隊能用的能力，歡迎與我聯繫。
+				</p>
+				<p class="contact">
+					聯絡方式：<a href="mailto:snowkidi@gmail.com">snowkidi@gmail.com</a>
+				</p>
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.prose {
+		max-width: var(--maxw);
+		margin-inline: auto;
+	}
+	.lede {
+		font-size: 1.2rem;
+		line-height: 1.8;
+		color: var(--ink-soft);
+		margin-bottom: 1.6rem;
+	}
+	.contact {
+		padding: 1rem 1.2rem;
+		background: var(--accent-soft);
+		border-radius: var(--radius);
+	}
+</style>
