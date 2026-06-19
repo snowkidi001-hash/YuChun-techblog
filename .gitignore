@@ -23,6 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# 個人規劃文件（不進版控；本機保留即可）
-*.docx
-docs/*.docx
+# 注意：進度文件 docs/部落格專案-進度與決策紀錄.md.docx 刻意納入版控，
+# 方便在不同電腦間同步進度。其它暫存的 Word 暫存檔才排除。
+~$*.docx
